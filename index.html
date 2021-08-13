@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        const BALL_COUNT = parseInt(
+          document.getElementById("ballCount").value,
+          10
+        );
+        const BALL_RADIUS = parseInt(
+          document.getElementById("ballRadius").value,
+          10
+        );
+        const BALL_SPEED = parseInt(
+          document.getElementById("ballSpeed").value,
+          10
+        );
+        startGame(BALL_COUNT, BALL_RADIUS, BALL_SPEED);
+      };
+    </script>
+    <div style="display: flex;">
+      <form onsubmit="handleSubmit(event);">
+        <label for="ballCount">Number of Balls (10-500):</label>
+        <input
+          type="number"
+          id="ballCount"
+          name="ballCount"
+          min="10"
+          max="500"
+        />
+        <br />
+        <label for="ballRadius">Radius of Balls (1-100):</label>
+        <input
+          type="number"
+          id="ballRadius"
+          name="ballRadius"
+          min="1"
+          max="100"
+        />
+        <br />
+        <label for="ballSpeed">Speed of Balls (1-100):</label>
+        <input
+          type="number"
+          id="ballSpeed"
+          name="ballSpeed"
+          min="1"
+          max="100"
+        />
+        <br />
+        <input type="submit" name="submitButton" />
+      </form>
+      <canvas id="myCanvas" width="900px" height="900px"></canvas>
+    </div>
+
+    <script type="text/javascript" src="./Collisions.js"></script>
+    <script type="text/javascript" src="./Ball.js"></script>
+    <script type="text/javascript" src="./Game.js"></script>
+  </body>
+</html>
